@@ -52,6 +52,8 @@ Where a Catalyst package is React library or application, the following standard
 * `components` for all React component files.
 * `components` is further divided into:
   * `views`: for top level components that define the "user view".
+  * Files within `view` should end with `View` where useful to distinguish from a widget. Where the "simple" name of a component implies its "view" nature, then the `View` suffix may be omitted, such as with `Dashboard.jsx` because a "dashboard" is naturally the thing which one would view.
   * `widgets`: visible/content generating components used to build higher level widgets and views.
   * `layouts`: non-visible/non-content components used to build higher level layouts, widgets, and views.
   * `utils`: non-visible/non-content components which effect flow and/or modify other components.
+  * Files within widget, layout, and util files should generally not use any 'type' suffix as is done with the view files.
