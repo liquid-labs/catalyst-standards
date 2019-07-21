@@ -1,4 +1,4 @@
-# Catalyst File Structure Standards
+# Liquid Dev File Structure Standards
 
 ## Terms
 
@@ -38,7 +38,6 @@ Within this standard, the following terms should be understood as follows:
   * `bash`
   * `go`
   * `js`
-  * `sql`
 * The following are the Catalyst standard technologies which may be found within `data`:
   * `sql`
 * Additional child folders should be used where none of the above are appropriate.
