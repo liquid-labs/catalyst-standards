@@ -15,8 +15,10 @@ These standards address the organization of software code and related work produ
 * Additional `package.json` files may be included as part of example code or as part of an embedded example project.
 * GUIDELINE: Do consider breaking example projects out into an independent project/package as well, as this is often cleaner.
 * Each package should contain at most one `go.mod` file.
-* Packages should be organized as "micro" packages (as opposed to monolithic packages).
-* GUIDELINE: If a package contains a subset of code which is independent, or through refactoring of base dependencies within the package, be made independent and that subset is utilized without reference to the remainder of the code in the package, then that subset should be considered for separation into an independent package.
+* Packages should be organized as "micro" packages (as opposed to monolithic packages) which enable a well defined set of related ontologies and behaviors which cannot be easily or usefully decomposed into clear component ontologies or behaviors.
+* Packages should not generally be split by technology.
+* GUIDELINE: In particular, where ontologies are represented in multiple technologies (such as SQL, go, and JS) each technology-specific model should be defined within the same model package.
+* GUIDELINE: Where a package deals with transmission across technology boundaries, both technologies "endpoints" should be contained in the same package. E.g., a REST-ful framework that generates common REST responses from go-implemented endpoints and JS consumer libraries that know how to unpack the response.
 
 
 ## Publishing standards
