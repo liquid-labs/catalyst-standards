@@ -2,7 +2,7 @@
 
 ## Scope
 
-These standards address the organization of software code and related work products into "packages".
+These standards address the organization of software code and related work products into packages. General file layout structure and naming conventions can be found within the [Liquid Dev File Structure Standards](./file-structure-standards.md).
 
 ## Terms
 
@@ -19,6 +19,7 @@ These standards address the organization of software code and related work produ
 * Packages should not generally be split by technology.
 * GUIDELINE: In particular, where ontologies are represented in multiple technologies (such as SQL, go, and JS) each technology-specific model should be defined within the same model package.
 * GUIDELINE: Where a package deals with transmission across technology boundaries, both technologies "endpoints" should be contained in the same package. E.g., a REST-ful framework that generates common REST responses from go-implemented endpoints and JS consumer libraries that know how to unpack the response.
+* `go.mod` must be placed in the package root. TOOD: It seems that 'replace' directives only work when this is the case. However, this produces warnings from the GCP dev-server tool. It's not clear what's going on.
 
 
 ## Publishing standards
@@ -30,3 +31,4 @@ These standards address the organization of software code and related work produ
     * `package.json`
     * `go.mod`
   * ensure that where the `package.json` and `go.mod` files refer to the same package, they refer to the same version of that package.
+  * have a clean `npm audit` report at the time of publishing.

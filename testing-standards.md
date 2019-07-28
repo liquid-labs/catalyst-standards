@@ -2,6 +2,8 @@
 
 ## Scope
 
+These standards address testing definitions and standards within the Liquid Dev context.
+
 ## Test Types
 
 Though we use standard categorizations, our primary purpose in categorization is to define the requirements of the testing framework rather than the "nature" of the test itself. Which is just to say, the classification of a test is most simply understood as "what infrastructure do I need to have up and running to execute these tests?"

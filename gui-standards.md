@@ -2,7 +2,7 @@
 
 ## Scope
 
-These standards apply to all graphical user interfaces, both mobile and web.
+These standards apply to all graphical user interfaces, both mobile and web within the Liquid Dev context.
 
 ## General
 

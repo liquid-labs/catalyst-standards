@@ -1,5 +1,9 @@
 # Liquid Dev File Structure Standards
 
+## Scope
+
+These standards address file layout (folders) and naming conventions within the Liquid Dev context. The placement and use of files specifically involved in package definitions are addressed in the [Liquid Dev Package Standards](./package-standards.md).
+
 ## Terms
 
 Within this standard, the following terms should be understood as follows:
