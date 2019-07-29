@@ -1,6 +1,6 @@
 # Liquid Dev Graphical Interface Standards
 
-## Purpose & Scope
+## Purpose & scope
 
 These standards apply to all graphical user interfaces, both mobile and web within the Liquid Dev context.
 
@@ -31,3 +31,9 @@ These standards apply to all graphical user interfaces, both mobile and web with
 * Styling should be done with JS+CSS and inline style.
 * "Styling components" should be used where appropriate. These may be used to abstract common styling rules affecting multiple components or to break apart or break out complex styling.
 * Adding lobal styling rules or modifying the `Theme` must be avoided unless specified in the spec or explicitly approved.
+
+## Linking
+
+* All user views *should* be "linkable", meaning that single URL link, with no request body, can be saved to return the user or other appropriately authorized users to the same view.
+* GUIDELINE: Where possible, the "link" should be the link displayed in the a user's web browser and identical with the URL used to access the view. When this is not possible, a "share" control should provide access to such a link.
+* GUIDELINE: The linked view should be understood as inherently dynamic and, of course, may not contain the same results upon subsequent visits.

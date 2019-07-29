@@ -1,6 +1,6 @@
 # Liquid Dev Package Standards
 
-## Purpose & Scope
+## Purpose & scope
 
 These standards address the organization of software code and related work products into packages. General file layout structure and naming conventions can be found within the [Liquid Dev File Structure Standards](./file-structure-standards.md).
 

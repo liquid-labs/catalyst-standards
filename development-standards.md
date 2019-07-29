@@ -1,6 +1,6 @@
 # Liquid Dev Development Standards
 
-## Purpose & Scope
+## Purpose & scope
 
 These standards address standards around the development process.
 
