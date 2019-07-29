@@ -1,6 +1,6 @@
 # Liquid Dev Development Standards
 
-## Scope
+## Purpose & Scope
 
 These standards address standards around the development process.
 
@@ -25,4 +25,4 @@ These standards are implemented by the Liquid Dev CLI project. (TODO: link after
   * It must be possible to accomplish update of all local assets, up to and including updates of any local service and/or interactive components (such as a locally hosted website), through a single user action.
     * Options for rebuilding, redeploying, and managing assets on a project-by-project basis should be provided, though these need not be robust against all user errors.
   * Automated "rebuild on change" should be used in cases where such a rebuild can be accomplished quickly.
-  * In cases where a rebuild cannot be accomplished quickly, 
+  * In cases where a rebuild cannot be accomplished quickly,

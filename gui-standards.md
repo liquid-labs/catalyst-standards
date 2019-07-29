@@ -1,6 +1,6 @@
 # Liquid Dev Graphical Interface Standards
 
-## Scope
+## Purpose & Scope
 
 These standards apply to all graphical user interfaces, both mobile and web within the Liquid Dev context.
 

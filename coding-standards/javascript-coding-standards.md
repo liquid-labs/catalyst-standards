@@ -1,6 +1,6 @@
 # Liquid Dev JavaScript Coding Standards
 
-## Scope
+## Purpose & Scope
 
 ## Syntax
 

@@ -1,6 +1,6 @@
 # Liquid Dev Documentation Standards
 
-## Scope
+## Purpose & Scope
 
 These standards address standards and best practices for documentation within the Liquid Dev framework.
 

@@ -1,6 +1,6 @@
 # Liquid Dev Testing Standards
 
-## Scope
+## Purpose & Scope
 
 These standards address testing definitions and standards within the Liquid Dev context.
 
