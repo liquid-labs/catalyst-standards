@@ -8,7 +8,7 @@ As any REST intro will tell you, REST is not a specification. Rather, it is a co
 
 ## Terms
 
-* **list call** is a REST-ful API call which works with a list or set of resource items.
+* **list call** is a REST-ful API call which returns list or set of resource items.
 
 ## Resource naming
 
@@ -45,6 +45,11 @@ As any REST intro will tell you, REST is not a specification. Rather, it is a co
 * The set of resource items selected by a list call *may* be further limited by filter parameters or request body contents.
 * Wherever possible such list filters *should* be included in the URL so that the results are "linkable".
 * When it is necessary or practical to encode list filters in the request body, a method *should* be provided to provide user agents with a durable link to the results.
+* The following parameters *should* be supported for any list resource supporting filtering:
+  * `query`: A query string used to limit the results. (TODO: provide query standards and link)
+  * `pageIndex`: The index of the 'page' within the results to return.
+  * `itemsPerPage`: An integer indicating the requested number of items per page.
+  * `sort`: A string indicating the sort method to apply to the results. Allowable values will be defined by the endpoint. (TODO: include in the query standards)
 * GUIDELINE: Particularly complicated filters (or searches) that cannot naturally be represented as `<key>=<value>` constructions may use the request body. However, even in these cases, backend implementations should try and provide a mechanism for directly linking to all results. See [Liquid Dev GUI Standards, "Linking" section](./gui-standards.md#linking)
 * URL parameters *should* not be used for other purposes.
 * GUIDELINE: In other words, use the request body should be used for all data transfers. This more or less boils down to "use only parameter (where possible) in list `GET` calls and use the request body for everything else".
@@ -54,3 +59,53 @@ As any REST intro will tell you, REST is not a specification. Rather, it is a co
 * Authenticated requests *must* be indicated by including a single `Authorization` header in the request with a value using the `Bearer <token>` format.
 * GUIDELINE: Note that this is more properly a matter of request authentication than authorization, despite the slightly unfortunate header header name.
 * GUIDELINE: Refer to [Liquid Dev Authentication & Authorization Standards](./authentication-and-authorization-standards.md) for additional guidance on those subjects.
+
+## Responses
+
+### Response envelope
+
+* All successful calls resulting in non-erroneous HTTP codes *must* use a standard response envelope as defined here.
+* GUIDELINE: The response envelope has the general form of:
+```
+{
+  "message": "A short string describing what happened.",
+  "searchParams": {
+    "query": "foo AND name=bar",
+    "sort": "nameAsc",
+    "pageInfo": {
+      "pageIndex": 3,
+      "itemsPerPage": 20,
+      "totalItemCount": 86,
+      "totalPageCount": 5
+    }
+  }
+}
+```
+* All successful API responses *must* be in in JSON format.
+* All responses *must* be wrapped in a common envelope with the following fields:
+  * `message`: A `message` field with a short string, in English, describing the result of the call *should* be included with all results.
+    * A `message` *must* be included for any response with a non-successful HTTP code.
+  * `searchParams`: An object describing the page and filter options used to generate the results *must* be included with all list results. `searchParams` has the following fields:
+    * `query`: A `query` field *must* be included. This will reflect back the query provided by the user, if any or be an empty string.
+    * `sort`: A `sort` field indicating the method used to sort the results must be included in the response.
+      * The `sort` field *must* be valid.
+      * Where the request indicated a valid `sort` method, that method *must* be reflected in the response.
+      * Where no `sort` is specified with the request, a default sort method *must* be defined by the input and reflected in the response envelope.
+      * Invalid request `sort` methods *must* result in an error.
+    * `pageInfo`: A `pageInfo` object *must* be included with the results. `pageInfo` has the following fields:
+      * `pageIndex`: The page index reflected in the results *must* be included in the response envelope.
+      * `itemsPerPage`: The number of items included in the page *must* be included in the response envelope.
+      * `totalItemCount`: A `totalItemCount` of items selected by endpoint with regard the user access and request filters, regardless of page, *must* be included with any list call.
+      * `totalPageCount`: A `totalPageCount` *must* be included.
+        * `totalPageCount` must equal `totalItemCount` divided by `itemsPerPage` and rounded up (integer division).
+* GUIDELINE: The current REST standards require underlying objects to be strictly counted. This is not always possible, or desirable for "big data" data sets and future versions will support different modes for reporting page info that support approximate counts and "next page" without fully specifying all pages.
+
+### Erroneous responses
+
+* An error response format, as defined here, *must* be used for all responses resulting in non-success HTTP codes.
+* An error response *should* include a text body, in English, describing the error.
+  * Where possible, the error response text *should* describe specifics of the error without providing any details which could be useful to an attacker.
+  * Where no specific details are provided, error response text *should* describe the meaning of the error code.
+  * The HTTP error code (numeric and/or string) *may* be reflected in the error response text.
+
+### Response codes
