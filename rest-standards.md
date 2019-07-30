@@ -79,6 +79,7 @@ As any REST intro will tell you, REST is not a specification. Rather, it is a co
       "totalPageCount": 5
     }
   }
+  "data": {...}
 }
 ```
 * All successful API responses *must* be in in JSON format.
