@@ -99,7 +99,7 @@ As any REST intro will tell you, REST is not a specification. Rather, it is a co
       * `totalItemCount`: A `totalItemCount` of items selected by endpoint with regard the user access and request filters, regardless of page, *must* be included with any list call.
       * `totalPageCount`: A `totalPageCount` *must* be included.
         * `totalPageCount` must equal `totalItemCount` divided by `itemsPerPage` and rounded up (integer division).
-* GUIDELINE: The current REST standards require underlying objects to be strictly counted. This is not always possible, or desirable for "big data" data sets and future versions will support different modes for reporting page info that support approximate counts and "next page" without fully specifying all pages.
+* GUIDELINE: The current REST standards require resource items objects to be strictly counted. This is not always possible, or desirable for "big data" data sets and future versions will support different modes for reporting page info that support approximate counts and "next page" without fully specifying all pages.
 
 ### Erroneous responses
 
