@@ -24,7 +24,7 @@ These standards address the organization of software code and related work produ
 
 ## Publishing standards
 
-* All published packages should:
+* All published packages *should*:
   * conform to the [Liquid Dev Testing Standards](./testing-standards.md)
   * pass all tests
   * ensure that all dependencies refer to published packages and, in particular, that local packages (such as those linked through `yalc` or go-module replacements) are not referenced in the published dependencies; this applies specifically to:
@@ -32,3 +32,5 @@ These standards address the organization of software code and related work produ
     * `go.mod`
   * ensure that where the `package.json` and `go.mod` files refer to the same package, they refer to the same version of that package.
   * have a clean `npm audit` report at the time of publishing.
+  * include a `README.md` file.
+* The `package.json` `description`, the first content line of the `README.md` (after the header), and the GitHub project description *should* match.
