@@ -21,6 +21,16 @@ These standards address the organization of software code and related work produ
 * GUIDELINE: Where a package deals with transmission across technology boundaries, both technologies "endpoints" should be contained in the same package. E.g., a REST-ful framework that generates common REST responses from go-implemented endpoints and JS consumer libraries that know how to unpack the response.
 * `go.mod` must be placed in the package root. TOOD: It seems that 'replace' directives only work when this is the case. However, this produces warnings from the GCP dev-server tool. It's not clear what's going on.
 
+## Versioning
+
+* Published packages *must* utilize a valid [semver](https://semver.org/) version.
+* Published package versions *should* be understood in light of these standards.
+* Packages *should* set the pre-release ID to either 'alpha', 'beta', or 'rc'.
+  * 'alpha' indicates an unreliable runtime and/or unstable interface.
+  * 'beta' indicates an unreliable runtime and relatively stable, but still uncertain interface.
+  * 'rc' indicates a generally reliable runtime and guaranteed interface.
+* GUIDELINE: 'alpha' should be used for prototype and experimental builds. The "alpha -> beta -> rc" progression is critical because semver does NOT understand these terms themselves, but rather sorts pre-release versions alphabetically.
+* Packages *must* set the pre-release ID to ensure proper sorting of published versions.
 
 ## Publishing standards
 
